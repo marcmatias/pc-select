@@ -1,0 +1,30 @@
+{
+  "name": "sa",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/sa.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:unit": "vitest --environment jsdom --root test/ run",
+    "test-watch:unit": "vitest --environment jsdom --root . watch",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "format-check": "prettier --check src/"
+  },
+  "devDependencies": {
+    "eslint": "^8.51.0",
+    "jsdom": "^22.1.0",
+    "prettier": "^3.0.3",
+    "vite": "^4.4.5",
+    "vitest": "^0.34.6"
+  },
+  "files": [
+    "dist/sa.js",
+    "dist/sa.css",
+    "LICENSE",
+    "README.md"
+  ]
+}

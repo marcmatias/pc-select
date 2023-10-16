@@ -1,0 +1,325 @@
+:root {
+  --white: white;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --black: black;
+
+  --background: white;
+  --border-color: var(--black);
+  --border-width: 1.5px;
+
+  --icon-bg: var(--gray-500);
+  --icon-color: var(--gray-100);
+  --icon-hover-color: var(--gray-200);
+  --icon-hover-bg: var(--black);
+
+  --outline-color: var(--gray-600);
+
+  --select-bg: var(--white);
+  --select-button-bg: var(--white);
+  --select-button-color: var(--gray-700);
+  --select-button-hover-bg: var(--gray-100);
+  --select-option-color: var(--gray-800);
+  --select-color: var(--gray-900);
+
+  --selected-option-bg: var(--gray-200);
+  --selected-option-color: var(--gray-700);
+  --selected-option-hover-bg: var(--gray-200);
+
+  --checkbox-color-accent: var(--gray-500);
+}
+
+.dark {
+  --background: var(--gray-900);
+  --border-color: #282828;
+
+  --icon-bg: var(--gray-800);
+  --icon-color: var(--gray-100);
+  --icon-hover-color: var(--gray-700);
+  --icon-hover-bg: var(--gray-200);
+
+  --outline-color: var(--gray-300);
+
+  --select-bg: #282828;
+  --select-button-bg: #282828;
+  --select-button-color: var(--gray-200);
+  --select-option-color: var(--gray-200);
+  --select-button-hover-bg: #181818;
+  --select-color: var(--gray-100);
+
+  --selected-option-bg: #181818;
+  --selected-option-color: var(--gray-200);
+  --selected-option-hover-bg: #181818;
+
+  --checkbox-color-accent: var(--gray-500);
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
+  background: var(--background);
+}
+
+.sa-container *,
+.sa-container * :before,
+.sa-container * :after {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.sa-container *:focus-visible {
+  outline: var(--border-width) solid var(--border-color);
+}
+
+.sa-container {
+  position: relative;
+  width: 300px;
+}
+
+.sa {
+  padding: 2px;
+}
+
+.sa select {
+  display: none;
+}
+
+.sa-blur {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.sa-select {
+  align-items: center;
+  background: var(--select-bg);
+  border-radius: 0.25rem;
+  border: var(--border-width) solid var(--border-color);
+  color: var(--select-color);
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: sans;
+  font-size: 0.83rem;
+  gap: 4px;
+  min-height: 30.3px;
+  padding: 6px 26px 6px 4px;
+  position: relative;
+  user-select: none;
+}
+
+.sa-selected__span {
+  padding: 0px 2px;
+  height: 100%;
+  pointer-events: none;
+  height: 19px;
+}
+
+.sa-selected-option {
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--selected-option-color);
+  background: var(--selected-option-bg);
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  height: 19px;
+}
+
+.sa-selected-option__span {
+  padding-right: 1px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sa-selected-option--single {
+  padding: 2px 4px;
+  background: transparent;
+}
+
+.sa-selected-option--counter {
+  justify-content: center;
+  width: 100%;
+  pointer-events: none;
+  font-weight: 600;
+  font-size: 0.73rem;
+}
+
+.sa-dropdown {
+  border: var(--border-width) solid var(--border-color);
+  background: var(--select-bg);
+  border-radius: 0.25rem;
+  display: none;
+  z-index: 20;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.sa-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sa-search__input {
+  font-family: sans;
+  font-size: 0.83rem;
+  padding: 4px 26px 4px 4px;
+  border:  var(--border-width) solid var(--border-color);
+  border-radius: 0.25rem;
+  background: var(--select-bg);
+  color: var(--select-color);
+  width: 100%;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  outline: none;
+  min-height: 30.3px;
+  height: 32px;
+}
+
+.sa-search__input:focus {
+  outline: none;
+}
+
+.sa-button__clear {
+  position: absolute;
+  right: 4px;
+  line-height: 0px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  overflow: display;
+}
+
+.sa-search__clear {
+  right: 8px;
+}
+
+.bi-x {
+  background: var(--icon-bg);
+  border-radius: 50%;
+  height: 14px;
+  width: 14px;
+  color: var(--icon-color);
+}
+
+.bi-x:hover {
+  background: var(--icon-hover-bg);
+  color: var(--icon-hover-color);
+}
+
+.bi-chevron-down {
+  position: absolute;
+  line-height: 0px;
+  right: 8px;
+  width: 13px;
+  height: 100%;
+  bottom: 0;
+  pointer-events: none;
+  fill: var(--icon-hover-bg);
+}
+
+.sa-dropdown__buttons {
+  display: flex;
+}
+
+.sa-dropdown-button {
+  width: 100%;
+  border: none;
+  border-bottom: var(--border-width) solid var(--border-color);
+  background-color: var(--select-button-bg);
+  color: var(--select-button-color);
+  height: 24px;
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+
+.sa-dropdown-button:hover {
+  background-color: var(--select-button-hover-bg);
+}
+
+.sa-dropdown-button:focus-visible {
+  background-color: var(--select-button-hover-bg);
+  outline-offset: 1px;
+  z-index: 20;
+}
+
+.sa-button-all {
+  border-right: var(--border-width) solid var(--border-color);
+}
+
+.sa-dropdown__option-list {
+  margin: 0px;
+  list-style: none;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.sa-list-li:hover {
+  background-color: var(--selected-option-hover-bg);
+}
+
+.sa-list-li__label:focus-visible {
+  outline: none;
+  background-color: var(--selected-option-hover-bg);
+}
+
+.sa-list-li__label {
+  font-size: 0.8rem;
+  padding: 8px 12px;
+  word-break: break-all;
+  flex-grow: 1;
+  padding-right: 8px;
+  color: var(--select-option-color);
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.sa-list-li__label--empty {
+  padding-left: 8px;
+}
+
+.sa-list-li__checkbox {
+  min-width: 30px;
+  height: 14px;
+  accent-color: var(--checkbox-color-accent);
+}
+
+.sa-list-li__checkbox::before {
+  color: red;
+}
+
+/* Scroll Horizontal */
+.sa-container ::-webkit-scrollbar {
+  height: 12px;
+  width: 4px;
+  background: #e2e8f0;
+}
+
+.sa-container ::-webkit-scrollbar-thumb {
+  background: #64748b;
+  -webkit-border-radius: 0.25rem;
+}

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <!-- UMD import --->
+    <!--
+    <link rel="stylesheet" href="dist/sa.css" >
+    -->
+    <!-- For theme example context -->
+    <style>
+      body.dark {
+        background-color: black;
+      }
+      button.theme {
+        font-weight: 600;
+        padding: 4px 6px;
+        background: white;
+        color: #555;
+        border: 2px solid #999;
+        border-radius: .25rem;
+        margin: 0px 12px;
+        cursor: pointer;
+      }
+      .dark button.theme {
+        background: black;
+        color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="main-section">
+      <div style="display: flex; justify-content: end">
+        <button class="theme">theme</button>
+      </div>
+      <div style="display: flex">
+        <div id="app" class="sa"></div>
+        <div>
+          <div id="app2" class="sa"></div>
+        </div>
+      </div>
+    </section>
+
+    <script type="module">
+      import { SelectActions } from "./src/main.js";
+      const selectActions = new SelectActions();
+      const data = [
+          {
+            value: 'Singapore',
+            label: 'Singapore',
+            checked: true
+          },
+          {
+            value: 'Portland',
+            label: 'Portland',
+          },
+          {
+            value: 'Halifax',
+            label: 'Halifax',
+          },
+          {
+            value: 'João Pessoa',
+            label: 'João Pessoa',
+          },
+          {
+            value: 'Buenos Aires',
+            label: 'Buenos Aires',
+          },
+          {
+            value: 'New York',
+            label: 'New York',
+          },
+      ];
+      const store = await selectActions.setView(
+        "#app",
+        data,
+        { lang: "ptBR", label: "Categorias", stateCallback: (value) => { console.log(value) } }
+      );
+
+      const data2 = [
+          {
+            value: 'Singapore',
+            label: 'Singapore',
+          },
+          {
+            value: 'Portland',
+            label: 'Portland',
+          },
+          {
+            value: 'Halifax',
+            label: 'Halifax',
+          },
+          {
+            value: 'João Pessoa',
+            label: 'João Pessoa',
+          },
+          {
+            value: 'Buenos Aires',
+            label: 'Buenos Aires',
+          },
+          {
+            value: 'New York',
+            label: 'New York',
+          },
+      ];
+      await selectActions.setView("#app2",data2);
+    </script>
+
+    <!--
+    <script src="dist/sa.js"></script>
+    <script>
+      const data = [
+          {
+            value: 'Singapore',
+            label: 'Singapore',
+          },
+          {
+            value: 'Portland',
+            label: 'Portland',
+          },
+          {
+            value: 'Halifax',
+            label: 'Halifax',
+          },
+          {
+            value: 'João Pessoa',
+            label: 'João Pessoa',
+          },
+          {
+            value: 'Buenos Aires',
+            label: 'Buenos Aires',
+          },
+          {
+            value: 'New York',
+            label: 'New York',
+          },
+      ];
+
+      document.addEventListener("DOMContentLoaded", async (e) => {
+        await SelectActions.setView(
+          "#app",
+          data,
+          { lang: "ptBR", label: "Categorias", stateCallback: (value) => { console.log(value) } }
+        );
+        await SelectActions.setView("#app2", data);
+      });
+    </script>
+    -->
+    <script> 
+      /* For theme example context */
+      document.querySelector(".theme").addEventListener("click", (e) => {
+        e.target.closest("body").classList.toggle("dark")
+      })
+    </script>
+  </body>
+</html>
