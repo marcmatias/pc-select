@@ -8,13 +8,12 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/main.js"),
       name: "SelectActions",
-      fileName: () => 'sa.js',
-
+      fileName: () => 'pc-sa-select.js',
       formats: ['umd']
     },
     rollupOptions: {
       output: {
-        assetFileNames: "sa.[ext]",
+        assetFileNames: "pc-sa-select.[ext]",
       },
     },
   },

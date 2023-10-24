@@ -1,9 +1,9 @@
 {
-  "name": "sa",
-  "private": true,
+  "name": "pc-sa-select",
+  "private": false,
   "version": "0.0.1",
   "type": "module",
-  "main": "dist/sa.js",
+  "main": "dist/pc-sa-select.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -22,8 +22,7 @@
     "vitest": "^0.34.6"
   },
   "files": [
-    "dist/sa.js",
-    "dist/sa.css",
+    "dist",
     "LICENSE",
     "README.md"
   ]
