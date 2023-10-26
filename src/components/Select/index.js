@@ -148,7 +148,7 @@ class Select extends Component {
       li => {
         li.addEventListener("click", (e) => {
           e.stopPropagation();
-          if (e.target.tagName  === "LABEL") {
+          if (e.target.tagName  === "INPUT") {
             const payload = e.target.closest("li").dataset.value;
             if (payload) {
               self.store.dispatch({ type: "select", payload });
