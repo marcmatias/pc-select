@@ -269,10 +269,6 @@
   overflow-y: auto;
 }
 
-.sa-list-li:hover {
-  background-color: var(--selected-option-hover-bg);
-}
-
 .sa-list-li__label:focus-visible {
   outline: none;
   background-color: var(--selected-option-hover-bg);
@@ -288,16 +284,27 @@
   user-select: none;
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+
+.sa-list-li__label:hover {
+  background-color: var(--selected-option-hover-bg);
 }
 
 .sa-list-li__label--empty {
   padding-left: 8px;
+  cursor: default;
+}
+
+.sa-list-li__label--empty:hover {
+  background: transparent;
 }
 
 .sa-list-li__checkbox {
   min-width: 30px;
   height: 14px;
   accent-color: var(--checkbox-color-accent);
+  cursor: pointer;
 }
 
 .sa-list-li__checkbox::before {

@@ -22,14 +22,14 @@ class Select extends Component {
       </div>
       <div class="sa-dropdown">
         <div class="sa-search">
-          <input class="sa-search__input" type="text" placeholder="Pesquisa" name="search" />
+          <input class="sa-search__input" type="text" placeholder="${self.inter.LABEL_SEARCH_INPUT}" name="search" />
         </div>
         <div class="sa-dropdown__buttons">
           <button class="sa-dropdown-button sa-button-all">${self.inter.BUTTON_SELECT_ALL}</button>
           <button class="sa-dropdown-button sa-button-none">${self.inter.BUTTON_SELECT_NONE}</button>
         </div>
         <ul class="sa-dropdown__option-list" tabindex="-1" >
-          ${state.options.map(opt => option(opt)).join("")}
+          ${state.options.map(opt => option({ opt, inter: self.inter })).join("")}
         </ul>
       </div>
     </div>`
@@ -123,9 +123,9 @@ class Select extends Component {
         return option.label.toLowerCase().includes(state.search.toLowerCase()) ;
       });
       if (result.length) {
-        optionList.innerHTML = result.map(opt => option(opt)).join("");
+        optionList.innerHTML = result.map(opt => option({ opt, inter: self.inter })).join("");
       } else {
-        optionList.innerHTML = option();
+        optionList.innerHTML = option({ inter: self.inter});
       }
     } else {
       // Generate all options elements
@@ -133,7 +133,7 @@ class Select extends Component {
         if (opt.checked) {
           count++;
         }
-        return option(opt)
+        return option({ opt, inter: self.inter })
       }).join("");
     }
 
@@ -179,15 +179,17 @@ class Select extends Component {
       count = count > 1 ? `${count} ${self.inter.LABEL_SELECTIONS}` : `${count} ${self.inter.LABEL_SELECTED}`;
       let label = select.querySelector(".sa-selected__span");
       if (label) {
+        // Remove label
         label.remove();
       }
 
       const counter = select.querySelector(".sa-selected-option.sa-selected-option--counter");
       if (counter) {
+        // Remove counter to recriate
         counter.remove();
       }
 
-      select.appendChild(stringToHtml(`<div class="sa-selected-option sa-selected-option--counter">${count}</div>`));
+      select.appendChild(stringToHtml(`<div class="sa-selected-option sa-selected-option--counter">${self.inter.LABEL}: ${count}</div>`));
     } else {
       const counter = select.querySelector(".sa-selected-option.sa-selected-option--counter");
       if (counter) {

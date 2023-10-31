@@ -110,7 +110,11 @@
             label: 'New York',
           },
       ];
-      await selectActions.setView("#app2",data2);
+      await selectActions.setView(
+        "#app2",
+        data2,
+        { lang: "enUS", stateCallback: (value) => { console.log(value) } }
+      )
     </script>
 
     <!--

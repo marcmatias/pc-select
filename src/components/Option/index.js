@@ -1,7 +1,7 @@
-const option = (opt) => {
+const option = ({ opt, inter }) => {
   if (!opt) {
     return `<li class="sa-list-li">
-      <label class="sa-list-li__label sa-list-li__label--empty" tabindex="0">Nothing found</label>
+      <label class="sa-list-li__label sa-list-li__label--empty" tabindex="0">${inter.NOTHING_FOUND}</label>
     </li>`;
   }
 
