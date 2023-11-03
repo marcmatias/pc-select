@@ -15,18 +15,23 @@ class SelectActions {
   async setView(element, options, {
     lang = "enUS",
     stateCallback,
-    label
-  } = {}) {
+    label,
+    selectedLabel,
+    selectionsLabel
+  }= {}) {
     const app = document.querySelector(element);
 
     // Cone options to avoid errors
     const optCloned = JSON.parse(JSON.stringify(options))
 
     let language = await inter(lang);
-    // External variable setting label text
-    if (label){
-     language =  {...language, 'LABEL': label };
-    }
+    // External variable setting labels text
+    language =  {
+      ...language,
+      LABEL: label ?? language.LABEL,
+      LABEL_SELECTED: selectedLabel ?? language.LABEL_SELECTED,
+      LABEL_SELECTIONS: selectionsLabel ?? language.LABEL_SELECTIONS,
+    };
     const store = new State({ initialState: { ...initialState, options: optCloned }, stateCallback });
     const select = new Select(store, app, language);
     select.render();

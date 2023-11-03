@@ -81,7 +81,13 @@
       const store = await selectActions.setView(
         "#app",
         data,
-        { lang: "ptBR", label: "Categorias", stateCallback: (value) => { console.log(value) } }
+        {
+          lang: "ptBR",
+          label: "Temas",
+          selectedLabel: "Selecionado",
+          selectionsLabel: "Selecionados",
+          stateCallback: (value) => { console.log(value)}
+        }
       );
 
       const data2 = [
