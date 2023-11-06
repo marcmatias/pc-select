@@ -222,10 +222,15 @@
   color: var(--icon-hover-color);
 }
 
-.bi-chevron-down {
+.sa-icon {
   position: absolute;
-  line-height: 0px;
   right: 8px;
+  line-height: 0px;
+}
+
+.bi-filter,
+.bi-funnel-fill {
+  line-height: 0px;
   width: 13px;
   height: 100%;
   bottom: 0;

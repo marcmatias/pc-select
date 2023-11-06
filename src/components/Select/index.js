@@ -1,4 +1,4 @@
-import { chevronDownIcon } from "@/icons"
+import { chevronDownIcon, funnelFillIcon, filterIcon } from "@/icons"
 import option from "@/components/Option"
 import trapFocus from "@/helpers/trapFocus"
 import stringToHtml from "@/helpers/stringToHtml"
@@ -6,8 +6,9 @@ import stringToHtml from "@/helpers/stringToHtml"
 import Component from '@/components/component';
 
 class Select extends Component {
-  constructor(store, element, inter) {
+  constructor(store, element, inter, { iconsSheetsLike = false } = {}) {
     super(store, element, inter);
+    this.iconsSheetsLike = iconsSheetsLike;
   }
 
   firstRender() {
@@ -17,7 +18,9 @@ class Select extends Component {
     container.classList = "sa-main-container";
     container.innerHTML = `<div class="sa-container">
       <div class="sa-select" tabindex="0">
-        ${chevronDownIcon}
+        <div class="sa-icon">
+          ${chevronDownIcon}
+        </div>
         <span class="sa-selected__span">${self.inter.LABEL}</span>
       </div>
       <div class="sa-dropdown">
@@ -174,9 +177,10 @@ class Select extends Component {
       dropdown.style.display = 'none';
     }
 
+    const icon = select.querySelector(".sa-icon");
     // Show or hide dropdown element
     if (count > 0) {
-      count = count > 1 ? `${count} ${self.inter.LABEL_SELECTIONS}` : `${count} ${self.inter.LABEL_SELECTED}`;
+      let countLabel = count > 1 ? `${count} ${self.inter.LABEL_SELECTIONS}` : `${count} ${self.inter.LABEL_SELECTED}`;
       let label = select.querySelector(".sa-selected__span");
       if (label) {
         // Remove label
@@ -189,7 +193,17 @@ class Select extends Component {
         counter.remove();
       }
 
-      select.appendChild(stringToHtml(`<div class="sa-selected-option sa-selected-option--counter">${self.inter.LABEL}: ${count}</div>`));
+      select.appendChild(
+        stringToHtml(`<div class="sa-selected-option sa-selected-option--counter">${self.inter.LABEL}: ${countLabel}</div>`)
+      );
+      if (self.iconsSheetsLike) {
+        icon.innerHTML = "";
+        if (count === state.options.length) {
+          icon.innerHTML = filterIcon;
+        } else {
+          icon.innerHTML = funnelFillIcon;
+        }
+      }
     } else {
       const counter = select.querySelector(".sa-selected-option.sa-selected-option--counter");
       if (counter) {
@@ -198,6 +212,10 @@ class Select extends Component {
       let label = select.querySelector(".sa-selected__span");
       if (!label) {
         select.appendChild(stringToHtml(`<span class="sa-selected__span">${self.inter.LABEL}</span>`));
+      }
+      if (self.iconsSheetsLike) {
+        icon.innerHTML = "";
+        icon.innerHTML = funnelFillIcon;
       }
     }
   }

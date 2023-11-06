@@ -17,8 +17,9 @@ class SelectActions {
     stateCallback,
     label,
     selectedLabel,
-    selectionsLabel
-  }= {}) {
+    selectionsLabel,
+    iconsSheetsLike
+  } = {}) {
     const app = document.querySelector(element);
 
     // Cone options to avoid errors
@@ -33,7 +34,7 @@ class SelectActions {
       LABEL_SELECTIONS: selectionsLabel ?? language.LABEL_SELECTIONS,
     };
     const store = new State({ initialState: { ...initialState, options: optCloned }, stateCallback });
-    const select = new Select(store, app, language);
+    const select = new Select(store, app, language, { iconsSheetsLike });
     select.render();
 
     return store;
